@@ -22,4 +22,4 @@ spec: # especificações do replicaset
   selector: # responsável por selcionar qual pod esse replicaset vai controlar as replicas
     matchLabels: # qual pod esse replicaset vai controlar
       apps: my-app # selecionar o pod definido ali
-  replicas: 4 # quantidade de pods que seram criados a princípio 
+  replicas: 10 # quantidade de pods que seram criados a princípio 
