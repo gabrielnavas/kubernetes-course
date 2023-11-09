@@ -1,0 +1,25 @@
+apiVersion: apps/v1 # versão da api
+kind: ReplicaSet # tipo do recurso ou objeto
+
+metadata: # metadados desse replicaset
+  name: fontend-rs # nome do replicaset
+  labels: 
+    app: frontend #label referente a esse replicaset
+
+spec: # especificações do replicaset
+  template: # informações do pod que quero replicar
+    metadata: # definição do pod, mesma informações do metadata do manifesto de um pod
+      name: my-pod-webserver # nome do recurso
+      labels: # usado para referenciar esse Pod por essas etiquetas
+        apps: my-app
+        tier: frontend
+      
+    spec: # especificações do Pod
+      containers: # containers que estaram dentro desse pod
+        - name: my-container-nginx # nome do container
+          image: nginx # imagem usava para o containers
+
+  selector: # responsável por selcionar qual pod esse replicaset vai controlar as replicas
+    matchLabels: # qual pod esse replicaset vai controlar
+      apps: my-app # selecionar o pod definido ali
+  replicas: 4 # quantidade de pods que seram criados a princípio 
