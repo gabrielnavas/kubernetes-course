@@ -1,1 +1,0 @@
-- O `ReplicaSet` é um recurso que controla a quantidade de pods, ele pode controlar aumentando a quantidade disponível de `Pods` ou reduzindo a quantidade de `Pods`.
