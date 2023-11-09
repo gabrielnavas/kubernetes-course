@@ -4,6 +4,11 @@ verificar pods criadas
 kubectl get pods
 ```
 
+verificar pods criadas de forma interativa
+```bash
+watch kubectl get pods
+```
+
 verificar os pods criados em todos os namespaces
 ```bash
 kubectl get pods --all-namespaces

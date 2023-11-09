@@ -2,7 +2,7 @@ apiVersion: apps/v1 # versão da api
 kind: ReplicaSet # tipo do recurso ou objeto
 
 metadata: # metadados desse replicaset
-  name: fontend-rs # nome do replicaset
+  name: frontend-rs # nome do replicaset
   labels: 
     app: frontend #label referente a esse replicaset
 
