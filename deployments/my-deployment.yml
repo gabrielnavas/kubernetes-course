@@ -1,0 +1,23 @@
+apiVersion: apps/v1 # api usada
+kind: Deployment # tipo do resurso
+
+metadata: #metadados do deployment
+  name: frontend-deployment # nome para esse deployment
+  labels: # labels para esse deployment
+    app: frontend 
+
+spec: # especificações desse deployment
+  template: # dados do pod
+    metadata:
+      name: pod-my-nginx
+      labels:
+        env: production
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  
+  selector: # selecionar o pod que vou usar nesse deployment
+    matchLabels:
+      env: production
+  replicas: 4
