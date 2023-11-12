@@ -15,9 +15,11 @@ spec: # especificações desse deployment
     spec:
       containers:
         - name: nginx-container
-          image: nginx
+          image: nginx:1.16.2
   
   selector: # selecionar o pod que vou usar nesse deployment
     matchLabels:
       env: production
-  replicas: 4
+  strategy:
+    type: Recreate
+  replicas: 5
