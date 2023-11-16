@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-pod
+  labels:
+    type: web-app
+spec:
+  containers: # os dois containers, o apache e o tomcat
+    - name: web-server-apache
+      image: httpd
+      ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service-loadbalancer
+spec:
+  type: LoadBalancer 
+  selector:
+    type: web-app # selecionado o pod desse service
+  ports:
+    - name: http
+      port: 80 # port no qual os pods externos se conectaram
+      targetPort: 80 # port no qual será encaminhado a solicitação
+      nodePort: 30008 # porta para o mundo externo
