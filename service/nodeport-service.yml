@@ -10,24 +10,19 @@ spec:
       image: httpd
       ports:
         - containerPort: 80
-    - name: web-server-tomcat
-      image: tomcat
-      ports:
-        - containerPort: 8080
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: frontend-service-nodeport
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     type: web-app # selecionado o pod desse service
   ports:
     - name: http
       port: 80 # port no qual os pods externos se conectaram
       targetPort: 80 # port no qual será encaminhado a solicitação
-    - name: http-tomcat
-      port: 8080 # como não foi definido o targetPort, ele será automaticamente setado para 8080
+      nodePort: 30008 # porta para o mundo externo
